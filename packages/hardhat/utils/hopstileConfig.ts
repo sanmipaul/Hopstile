@@ -93,13 +93,16 @@ export const SALE = {
 
 /**
  * Gas each side gives the other's `lzReceive`. The sender pays for it as part of the LayerZero fee.
- * Minting through HTS is charged as gas, so the Hedera budgets are far larger than a storage write needs.
+ *
+ * HTS charges its fees as gas. They are set in US dollars, so the gas a mint needs rises when HBAR falls: at
+ * 0.10 USD per HBAR and 87 tinybars per gas, minting one serial costs about 270,000 gas and transferring it
+ * about 14,000. The per-ticket budget leaves room for the HBAR price to drop by a third.
  */
 export const GAS = {
   /** Booth to issuer: a mint order, before the per-ticket part. */
-  mintBase: 200_000n,
+  mintBase: 300_000n,
   /** Booth to issuer: extra gas per ticket in the order. */
-  mintPerTicket: 300_000n,
+  mintPerTicket: 450_000n,
   /** Booth to issuer: a settlement message. */
   settle: 150_000n,
 } as const;
