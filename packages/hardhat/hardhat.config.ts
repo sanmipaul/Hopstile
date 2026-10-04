@@ -89,9 +89,10 @@ const config: HardhatUserConfig = {
 };
 
 // Extend the deploy task to also generate TypeScript ABIs after deployment.
+// The in-process `hardhat` network keeps nothing on disk, so there is nothing to generate from.
 task("deploy").setAction(async (args, hre, runSuper) => {
   await runSuper(args);
-  await generateTsAbis(hre);
+  if (hre.network.name !== "hardhat") await generateTsAbis(hre);
 });
 
 export default config;
