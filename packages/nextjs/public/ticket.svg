@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-labelledby="title">
+  <title id="title">Hopstile Launch Night ticket</title>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1036" />
+      <stop offset="1" stop-color="#3a1f73" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#paper)"
+    d="M24 0h592a24 24 0 0 1 24 24v104a32 32 0 0 0 0 64v104a24 24 0 0 1-24 24H24a24 24 0 0 1-24-24V192a32 32 0 0 0 0-64V24A24 24 0 0 1 24 0z"
+  />
+  <line x1="456" y1="24" x2="456" y2="296" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="6 10" />
+  <text x="56" y="84" fill="#ffffff" fill-opacity="0.7" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="4">ADMIT ONE</text>
+  <text x="56" y="150" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="46" font-weight="700">Hopstile</text>
+  <text x="56" y="196" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="28">Launch Night</text>
+  <text x="56" y="262" fill="#ffffff" fill-opacity="0.7" font-family="Helvetica, Arial, sans-serif" font-size="16">Bought on any chain. Minted on Hedera.</text>
+  <text x="548" y="150" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">HTS</text>
+  <text x="548" y="180" fill="#ffffff" fill-opacity="0.7" font-family="Helvetica, Arial, sans-serif" font-size="16" text-anchor="middle">NFT</text>
+</svg>

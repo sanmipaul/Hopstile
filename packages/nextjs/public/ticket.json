@@ -1,0 +1,14 @@
+{
+  "name": "Hopstile Launch Night",
+  "creator": "Hopstile",
+  "description": "General admission to Hopstile Launch Night. Paid for on another chain and minted on Hedera as a native HTS NFT.",
+  "image": "https://raw.githubusercontent.com/sanmipaul/Hopstile/main/packages/nextjs/public/ticket.svg",
+  "type": "image/svg+xml",
+  "format": "HIP412@2.0.0",
+  "properties": {
+    "event": "Hopstile Launch Night",
+    "admission": "General admission",
+    "issuedOn": "Hedera",
+    "soldOver": "LayerZero"
+  }
+}
