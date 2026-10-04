@@ -26,7 +26,7 @@ const createCollection: DeployFunction = async function (hre: HardhatRuntimeEnvi
   const tx = await issuer.createCollection(
     collectionArgs(deployer),
     await txOverrides(hre, config, {
-      hederaGasLimit: 1_500_000n,
+      hederaGasLimit: 600_000n,
       value: hbarToEvmAmount(config, COLLECTION.creationFeeHbar),
     }),
   );
