@@ -73,7 +73,7 @@ export const COLLECTION = {
   memo: "Tickets sold on any chain, minted on Hedera",
   maxSupply: 500,
   /** Stored on every ticket, at most 100 bytes. Points at a HIP-412 metadata file. */
-  metadata: "https://raw.githubusercontent.com/sanmipaul/hopstile/main/packages/nextjs/public/ticket.json",
+  metadata: "https://raw.githubusercontent.com/sanmipaul/Hopstile/main/packages/nextjs/public/ticket.json",
   /** Share of every resale that HTS pays to the royalty collector: 500 is 5%. Zero creates no royalty. */
   royaltyBps: 500,
   /** HBAR the receiver pays when a ticket changes hands for no payment. Zero for none. */
