@@ -76,7 +76,7 @@ Tests run offline against the mocks in `contracts/mocks` and take a few seconds.
 - System contracts **return a response code** instead of reverting. `22` is success. Check it and revert with `HtsCallFailed(code)`.
 - `createNonFungibleToken` is **payable**: the creation fee is `msg.value`.
 - `mintToken` mints **at most 10** serials per call and metadata is **at most 100 bytes**. `MAX_PER_ORDER` exists because of the first limit.
-- HTS charges its fees **as gas**, so a mint needs far more gas than a storage write. The gas the booth buys for an order is `GAS.mintBase + GAS.mintPerTicket * quantity`.
+- HTS charges its fees **as gas**, and sets them in US dollars, so a mint needs far more gas than a storage write and more still when HBAR falls. The gas the booth buys for an order is `GAS.mintBase + GAS.mintPerTicket * quantity`.
 - Hedera refunds **at most 20%** of unused gas, so scripts set explicit, modest gas limits on Hedera through `txOverrides`.
 - The official HTS emulator does **not** assign serials when it mints NFTs. Local runs and tests install `MockHederaTokenService` at `0x167` instead.
 
