@@ -1,0 +1,84 @@
+{
+  "name": "hopstile",
+  "description": "Cross-chain ticket sales: buyers pay on Base, LayerZero carries the order, and the ticket is minted on Hedera as a native HTS NFT with a network-enforced royalty.",
+  "version": "0.1.0",
+  "create-scaffold-hbar": {
+    "requirements": {
+      "node": ">=20.18.3"
+    },
+    "capabilities": {
+      "frontend": ["nextjs-app"],
+      "solidityFramework": ["hardhat"],
+      "packageManager": ["yarn"]
+    },
+    "defaults": {
+      "frontend": "nextjs-app",
+      "solidityFramework": "hardhat",
+      "packageManager": "yarn"
+    },
+    "outro": {
+      "sections": [
+        {
+          "title": "Run both chains on one local chain",
+          "steps": [
+            {
+              "label": "Start a local chain",
+              "command": "{run:hardhat:chain}"
+            },
+            {
+              "label": "Deploy the issuer and the booth, wire them, create the HTS collection and open a sale",
+              "command": "{run:hardhat:deploy} --network localhost"
+            },
+            {
+              "label": "Buy a ticket at the booth and see it minted",
+              "command": "{run:hardhat:buy} --network localhost"
+            },
+            {
+              "label": "Start the frontend",
+              "command": "{run:next:dev}"
+            },
+            {
+              "label": "Run the tests",
+              "command": "{run:hardhat:test}"
+            }
+          ]
+        },
+        {
+          "title": "Run it on Hedera testnet and Base Sepolia over LayerZero",
+          "steps": [
+            {
+              "label": "Fund one ECDSA account with testnet HBAR",
+              "url": "https://portal.hedera.com/faucet"
+            },
+            {
+              "text": "The same account needs a little Base Sepolia ETH."
+            },
+            {
+              "label": "Import its key",
+              "command": "{run:hardhat:account:import}"
+            },
+            {
+              "label": "Deploy the issuer and create the HTS ticket collection",
+              "command": "{run:hardhat:deploy} --network hederaTestnet"
+            },
+            {
+              "label": "Deploy the booth",
+              "command": "{run:hardhat:deploy} --network baseSepolia"
+            },
+            {
+              "label": "Wire the issuer to the booth and open the sale",
+              "command": "{run:hardhat:deploy} --network hederaTestnet"
+            },
+            {
+              "label": "Buy a ticket from Base Sepolia",
+              "command": "{run:hardhat:buy} --network baseSepolia"
+            },
+            {
+              "text": "README.md explains how the two contracts work and every setting. AGENTS.md briefs your coding agent."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
