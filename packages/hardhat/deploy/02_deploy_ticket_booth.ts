@@ -1,7 +1,6 @@
 import type { HardhatRuntimeEnvironment } from "hardhat/types";
 import type { DeployFunction } from "hardhat-deploy/types";
 
-import { getDeployGasPrice } from "../utils/getDeployGasPrice";
 import { GAS, LOCAL_EIDS, NETWORKS, getNetworkConfig } from "../utils/hopstileConfig";
 
 /** Deploys `TicketBooth` on a booth network, or on the local chain. Skipped on Hedera. */
@@ -26,7 +25,6 @@ const deployTicketBooth: DeployFunction = async function (hre: HardhatRuntimeEnv
     log: true,
     autoMine: true,
     gasLimit: "3500000",
-    gasPrice: await getDeployGasPrice(hre),
   });
 };
 
