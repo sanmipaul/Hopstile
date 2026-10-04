@@ -5,581 +5,3523 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-hbar/contract";
 
 const deployedContracts = {
-  296: {
-    HederaToken: {
-      address: "0xa510c1b5ebcefb83267f4f2bae2765611606c85a",
+  31337: {
+    MockEndpointBase: {
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
       abi: [
         {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid_",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "nonpayable",
           type: "constructor",
-          inputs: [
-            {
-              name: "initialOwner",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-          stateMutability: "nonpayable",
         },
         {
-          type: "function",
-          name: "allowance",
           inputs: [
             {
-              name: "owner",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "spender",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
               internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "approve",
-          inputs: [
-            {
-              name: "spender",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "value",
+              name: "index",
               type: "uint256",
-              internalType: "uint256",
             },
           ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool",
-            },
-          ],
-          stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "balanceOf",
-          inputs: [
-            {
-              name: "account",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "decimals",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint8",
-              internalType: "uint8",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "mint",
-          inputs: [
-            {
-              name: "to",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [],
-          stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "name",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "owner",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "renounceOwnership",
-          inputs: [],
-          outputs: [],
-          stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "symbol",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "totalSupply",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "transfer",
-          inputs: [
-            {
-              name: "to",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "value",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool",
-            },
-          ],
-          stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "transferFrom",
-          inputs: [
-            {
-              name: "from",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "to",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "value",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool",
-            },
-          ],
-          stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "transferOwnership",
-          inputs: [
-            {
-              name: "newOwner",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-          outputs: [],
-          stateMutability: "nonpayable",
-        },
-        {
-          type: "event",
-          name: "Approval",
-          inputs: [
-            {
-              name: "owner",
-              type: "address",
-              indexed: true,
-              internalType: "address",
-            },
-            {
-              name: "spender",
-              type: "address",
-              indexed: true,
-              internalType: "address",
-            },
-            {
-              name: "value",
-              type: "uint256",
-              indexed: false,
-              internalType: "uint256",
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: "event",
-          name: "OwnershipTransferred",
-          inputs: [
-            {
-              name: "previousOwner",
-              type: "address",
-              indexed: true,
-              internalType: "address",
-            },
-            {
-              name: "newOwner",
-              type: "address",
-              indexed: true,
-              internalType: "address",
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: "event",
-          name: "Transfer",
-          inputs: [
-            {
-              name: "from",
-              type: "address",
-              indexed: true,
-              internalType: "address",
-            },
-            {
-              name: "to",
-              type: "address",
-              indexed: true,
-              internalType: "address",
-            },
-            {
-              name: "value",
-              type: "uint256",
-              indexed: false,
-              internalType: "uint256",
-            },
-          ],
-          anonymous: false,
-        },
-        {
+          name: "AlreadyDelivered",
           type: "error",
-          name: "ERC20InsufficientAllowance",
-          inputs: [
-            {
-              name: "spender",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "allowance",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "needed",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
         },
         {
-          type: "error",
-          name: "ERC20InsufficientBalance",
           inputs: [
             {
+              internalType: "uint256",
+              name: "required",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "supplied",
+              type: "uint256",
+            },
+          ],
+          name: "InsufficientFee",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidOptions",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NotRemoteEndpoint",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "RefundFailed",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+          ],
+          name: "UnknownEid",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
               name: "sender",
               type: "address",
+            },
+            {
+              indexed: false,
               internalType: "address",
-            },
-            {
-              name: "balance",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "needed",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "ERC20InvalidApprover",
-          inputs: [
-            {
-              name: "approver",
+              name: "delegate",
               type: "address",
-              internalType: "address",
             },
           ],
+          name: "DelegateSet",
+          type: "event",
         },
         {
-          type: "error",
-          name: "ERC20InvalidReceiver",
+          anonymous: false,
           inputs: [
             {
+              indexed: true,
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          name: "PacketDelivered",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "bytes",
+              name: "reason",
+              type: "bytes",
+            },
+          ],
+          name: "PacketFailed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "dstEid",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
               name: "receiver",
               type: "address",
-              internalType: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint64",
+              name: "nonce",
+              type: "uint64",
             },
           ],
+          name: "PacketSent",
+          type: "event",
         },
         {
-          type: "error",
-          name: "ERC20InvalidSender",
+          inputs: [],
+          name: "autoDeliver",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "baseFee",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
+              internalType: "address",
+              name: "oapp",
+              type: "address",
+            },
+          ],
+          name: "delegates",
+          outputs: [
+            {
+              internalType: "address",
+              name: "delegate",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "deliver",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "eid",
+          outputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "feePerGas",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "getPacket",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "address",
+                  name: "sender",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "receiver",
+                  type: "address",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "guid",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint128",
+                  name: "gasLimit",
+                  type: "uint128",
+                },
+                {
+                  internalType: "bool",
+                  name: "delivered",
+                  type: "bool",
+                },
+                {
+                  internalType: "bytes",
+                  name: "message",
+                  type: "bytes",
+                },
+              ],
+              internalType: "struct MockEndpointV2.Packet",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "inboxLength",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
               name: "sender",
               type: "address",
-              internalType: "address",
             },
-          ],
-        },
-        {
-          type: "error",
-          name: "ERC20InvalidSpender",
-          inputs: [
             {
-              name: "spender",
-              type: "address",
-              internalType: "address",
+              internalType: "uint32",
+              name: "dstEid",
+              type: "uint32",
             },
           ],
-        },
-        {
-          type: "error",
-          name: "OwnableInvalidOwner",
-          inputs: [
-            {
-              name: "owner",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "OwnableUnauthorizedAccount",
-          inputs: [
-            {
-              name: "account",
-              type: "address",
-              internalType: "address",
-            },
-          ],
-        },
-      ],
-      inheritedFunctions: {},
-      deployedOnBlock: 33578755,
-    },
-    HtsTokenCreator: {
-      address: "0x03fcda15d3955b20557028db9fabe6f5847f00ab",
-      abi: [
-        {
-          type: "function",
-          name: "HTS",
-          inputs: [],
+          name: "outboundNonce",
           outputs: [
             {
-              name: "",
-              type: "address",
-              internalType: "address",
+              internalType: "uint64",
+              name: "nonce",
+              type: "uint64",
             },
           ],
           stateMutability: "view",
+          type: "function",
         },
         {
-          type: "function",
-          name: "SUCCESS",
-          inputs: [],
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "dstEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "receiver",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "bytes",
+                  name: "message",
+                  type: "bytes",
+                },
+                {
+                  internalType: "bytes",
+                  name: "options",
+                  type: "bytes",
+                },
+                {
+                  internalType: "bool",
+                  name: "payInLzToken",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct MessagingParams",
+              name: "params",
+              type: "tuple",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "quote",
           outputs: [
             {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "nativeFee",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "lzTokenFee",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct MessagingFee",
               name: "",
-              type: "int64",
-              internalType: "int64",
+              type: "tuple",
             },
           ],
           stateMutability: "view",
+          type: "function",
         },
         {
-          type: "function",
-          name: "createToken",
           inputs: [
             {
-              name: "name",
-              type: "string",
-              internalType: "string",
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "address",
+                  name: "sender",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "receiver",
+                  type: "address",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "guid",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint128",
+                  name: "gasLimit",
+                  type: "uint128",
+                },
+                {
+                  internalType: "bool",
+                  name: "delivered",
+                  type: "bool",
+                },
+                {
+                  internalType: "bytes",
+                  name: "message",
+                  type: "bytes",
+                },
+              ],
+              internalType: "struct MockEndpointV2.Packet",
+              name: "packet",
+              type: "tuple",
             },
+          ],
+          name: "receivePacket",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
             {
-              name: "symbol",
-              type: "string",
-              internalType: "string",
+              internalType: "uint32",
+              name: "remoteEid",
+              type: "uint32",
             },
+          ],
+          name: "remotes",
+          outputs: [
             {
-              name: "initialSupply",
-              type: "uint256",
+              internalType: "contract MockEndpointV2",
+              name: "endpoint",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
               internalType: "uint256",
-            },
-            {
-              name: "decimals",
-              type: "uint8",
-              internalType: "uint8",
+              name: "index",
+              type: "uint256",
             },
           ],
+          name: "retry",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "dstEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "receiver",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "bytes",
+                  name: "message",
+                  type: "bytes",
+                },
+                {
+                  internalType: "bytes",
+                  name: "options",
+                  type: "bytes",
+                },
+                {
+                  internalType: "bool",
+                  name: "payInLzToken",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct MessagingParams",
+              name: "params",
+              type: "tuple",
+            },
+            {
+              internalType: "address",
+              name: "refundAddress",
+              type: "address",
+            },
+          ],
+          name: "send",
           outputs: [
             {
-              name: "tokenAddress",
-              type: "address",
-              internalType: "address",
+              components: [
+                {
+                  internalType: "bytes32",
+                  name: "guid",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint256",
+                      name: "nativeFee",
+                      type: "uint256",
+                    },
+                    {
+                      internalType: "uint256",
+                      name: "lzTokenFee",
+                      type: "uint256",
+                    },
+                  ],
+                  internalType: "struct MessagingFee",
+                  name: "fee",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct MessagingReceipt",
+              name: "receipt",
+              type: "tuple",
             },
           ],
           stateMutability: "payable",
-        },
-        {
           type: "function",
-          name: "mintToken",
+        },
+        {
           inputs: [
             {
-              name: "token",
-              type: "address",
-              internalType: "address",
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256",
+              internalType: "bool",
+              name: "enabled",
+              type: "bool",
             },
           ],
-          outputs: [
-            {
-              name: "newTotalSupply",
-              type: "int64",
-              internalType: "int64",
-            },
-          ],
+          name: "setAutoDeliver",
+          outputs: [],
           stateMutability: "nonpayable",
+          type: "function",
         },
         {
-          type: "event",
-          name: "TokenCreated",
           inputs: [
             {
-              name: "tokenAddress",
-              type: "address",
-              indexed: true,
               internalType: "address",
-            },
-            {
-              name: "name",
-              type: "string",
-              indexed: false,
-              internalType: "string",
-            },
-            {
-              name: "symbol",
-              type: "string",
-              indexed: false,
-              internalType: "string",
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: "event",
-          name: "TokenMinted",
-          inputs: [
-            {
-              name: "tokenAddress",
+              name: "delegate",
               type: "address",
-              indexed: true,
-              internalType: "address",
-            },
-            {
-              name: "newTotalSupply",
-              type: "int64",
-              indexed: false,
-              internalType: "int64",
             },
           ],
-          anonymous: false,
+          name: "setDelegate",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
         },
         {
-          type: "error",
-          name: "HtsCreateFailed",
           inputs: [
             {
-              name: "responseCode",
-              type: "int64",
-              internalType: "int64",
+              internalType: "uint256",
+              name: "baseFee_",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "feePerGas_",
+              type: "uint256",
             },
           ],
+          name: "setFees",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
         },
         {
-          type: "error",
-          name: "HtsMintFailed",
           inputs: [
             {
-              name: "responseCode",
-              type: "int64",
-              internalType: "int64",
+              internalType: "uint32",
+              name: "remoteEid",
+              type: "uint32",
+            },
+            {
+              internalType: "contract MockEndpointV2",
+              name: "endpoint",
+              type: "address",
             },
           ],
+          name: "setRemote",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
         },
       ],
       inheritedFunctions: {},
-      deployedOnBlock: 33578759,
+      deployedOnBlock: 3,
+    },
+    MockEndpointHedera: {
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid_",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "AlreadyDelivered",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "required",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "supplied",
+              type: "uint256",
+            },
+          ],
+          name: "InsufficientFee",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidOptions",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NotRemoteEndpoint",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "RefundFailed",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+          ],
+          name: "UnknownEid",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "delegate",
+              type: "address",
+            },
+          ],
+          name: "DelegateSet",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          name: "PacketDelivered",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "bytes",
+              name: "reason",
+              type: "bytes",
+            },
+          ],
+          name: "PacketFailed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "dstEid",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "receiver",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint64",
+              name: "nonce",
+              type: "uint64",
+            },
+          ],
+          name: "PacketSent",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "autoDeliver",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "baseFee",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "oapp",
+              type: "address",
+            },
+          ],
+          name: "delegates",
+          outputs: [
+            {
+              internalType: "address",
+              name: "delegate",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "deliver",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "eid",
+          outputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "feePerGas",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "getPacket",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "address",
+                  name: "sender",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "receiver",
+                  type: "address",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "guid",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint128",
+                  name: "gasLimit",
+                  type: "uint128",
+                },
+                {
+                  internalType: "bool",
+                  name: "delivered",
+                  type: "bool",
+                },
+                {
+                  internalType: "bytes",
+                  name: "message",
+                  type: "bytes",
+                },
+              ],
+              internalType: "struct MockEndpointV2.Packet",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "inboxLength",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              internalType: "uint32",
+              name: "dstEid",
+              type: "uint32",
+            },
+          ],
+          name: "outboundNonce",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "nonce",
+              type: "uint64",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "dstEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "receiver",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "bytes",
+                  name: "message",
+                  type: "bytes",
+                },
+                {
+                  internalType: "bytes",
+                  name: "options",
+                  type: "bytes",
+                },
+                {
+                  internalType: "bool",
+                  name: "payInLzToken",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct MessagingParams",
+              name: "params",
+              type: "tuple",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "quote",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "nativeFee",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "lzTokenFee",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct MessagingFee",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "address",
+                  name: "sender",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "receiver",
+                  type: "address",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "guid",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint128",
+                  name: "gasLimit",
+                  type: "uint128",
+                },
+                {
+                  internalType: "bool",
+                  name: "delivered",
+                  type: "bool",
+                },
+                {
+                  internalType: "bytes",
+                  name: "message",
+                  type: "bytes",
+                },
+              ],
+              internalType: "struct MockEndpointV2.Packet",
+              name: "packet",
+              type: "tuple",
+            },
+          ],
+          name: "receivePacket",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "remoteEid",
+              type: "uint32",
+            },
+          ],
+          name: "remotes",
+          outputs: [
+            {
+              internalType: "contract MockEndpointV2",
+              name: "endpoint",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "index",
+              type: "uint256",
+            },
+          ],
+          name: "retry",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "dstEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "receiver",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "bytes",
+                  name: "message",
+                  type: "bytes",
+                },
+                {
+                  internalType: "bytes",
+                  name: "options",
+                  type: "bytes",
+                },
+                {
+                  internalType: "bool",
+                  name: "payInLzToken",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct MessagingParams",
+              name: "params",
+              type: "tuple",
+            },
+            {
+              internalType: "address",
+              name: "refundAddress",
+              type: "address",
+            },
+          ],
+          name: "send",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "bytes32",
+                  name: "guid",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+                {
+                  components: [
+                    {
+                      internalType: "uint256",
+                      name: "nativeFee",
+                      type: "uint256",
+                    },
+                    {
+                      internalType: "uint256",
+                      name: "lzTokenFee",
+                      type: "uint256",
+                    },
+                  ],
+                  internalType: "struct MessagingFee",
+                  name: "fee",
+                  type: "tuple",
+                },
+              ],
+              internalType: "struct MessagingReceipt",
+              name: "receipt",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bool",
+              name: "enabled",
+              type: "bool",
+            },
+          ],
+          name: "setAutoDeliver",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "delegate",
+              type: "address",
+            },
+          ],
+          name: "setDelegate",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "baseFee_",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "feePerGas_",
+              type: "uint256",
+            },
+          ],
+          name: "setFees",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "remoteEid",
+              type: "uint32",
+            },
+            {
+              internalType: "contract MockEndpointV2",
+              name: "endpoint",
+              type: "address",
+            },
+          ],
+          name: "setRemote",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+      deployedOnBlock: 1,
+    },
+    TicketBooth: {
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "endpoint_",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "owner_",
+              type: "address",
+            },
+            {
+              internalType: "uint32",
+              name: "issuerEid_",
+              type: "uint32",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint128",
+                  name: "mintBase",
+                  type: "uint128",
+                },
+                {
+                  internalType: "uint128",
+                  name: "mintPerTicket",
+                  type: "uint128",
+                },
+                {
+                  internalType: "uint128",
+                  name: "settle",
+                  type: "uint128",
+                },
+              ],
+              internalType: "struct TicketBooth.GasConfig",
+              name: "gasConfig_",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "cost",
+              type: "uint256",
+            },
+          ],
+          name: "InsufficientPayment",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidDelegate",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidEndpointCall",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidGasConfig",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidQuantity",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "LzTokenUnavailable",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MessageTooShort",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NativeTransferFailed",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+          ],
+          name: "NoPeer",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "msgValue",
+              type: "uint256",
+            },
+          ],
+          name: "NotEnoughNative",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+          ],
+          name: "NotIssuerChain",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NothingToWithdraw",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "addr",
+              type: "address",
+            },
+          ],
+          name: "OnlyEndpoint",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "sender",
+              type: "bytes32",
+            },
+          ],
+          name: "OnlyPeer",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "OwnableInvalidOwner",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "OwnableUnauthorizedAccount",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+          ],
+          name: "PreviousSaleNotSettled",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ReentrancyGuardReentrantCall",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+          ],
+          name: "SafeERC20FailedOperation",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "SaleNotOpen",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "SaleStillOpen",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "remaining",
+              type: "uint32",
+            },
+          ],
+          name: "SoldOut",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+          ],
+          name: "StaleSale",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint8",
+              name: "kind",
+              type: "uint8",
+            },
+          ],
+          name: "UnknownMessage",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ZeroAddress",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint128",
+              name: "mintBase",
+              type: "uint128",
+            },
+            {
+              indexed: false,
+              internalType: "uint128",
+              name: "mintPerTicket",
+              type: "uint128",
+            },
+            {
+              indexed: false,
+              internalType: "uint128",
+              name: "settle",
+              type: "uint128",
+            },
+          ],
+          name: "GasConfigSet",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "bytes32",
+              name: "peer",
+              type: "bytes32",
+            },
+          ],
+          name: "PeerSet",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "ProceedsWithdrawn",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+            {
+              indexed: false,
+              internalType: "uint128",
+              name: "price",
+              type: "uint128",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "allocation",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "uint64",
+              name: "closesAt",
+              type: "uint64",
+            },
+            {
+              indexed: false,
+              internalType: "uint8",
+              name: "maxPerOrder",
+              type: "uint8",
+            },
+          ],
+          name: "SaleListed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "sold",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          name: "SaleSettlementSent",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint64",
+              name: "orderId",
+              type: "uint64",
+            },
+            {
+              indexed: true,
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "buyer",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "recipient",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint8",
+              name: "quantity",
+              type: "uint8",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "cost",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          name: "TicketsOrdered",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "sender",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+              ],
+              internalType: "struct Origin",
+              name: "origin",
+              type: "tuple",
+            },
+          ],
+          name: "allowInitializePath",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "recipient",
+              type: "address",
+            },
+            {
+              internalType: "uint8",
+              name: "quantity",
+              type: "uint8",
+            },
+          ],
+          name: "buy",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "orderId",
+              type: "uint64",
+            },
+            {
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "currentSale",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint64",
+                  name: "saleId",
+                  type: "uint64",
+                },
+                {
+                  internalType: "uint128",
+                  name: "price",
+                  type: "uint128",
+                },
+                {
+                  internalType: "uint32",
+                  name: "allocation",
+                  type: "uint32",
+                },
+                {
+                  internalType: "uint32",
+                  name: "sold",
+                  type: "uint32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "closesAt",
+                  type: "uint64",
+                },
+                {
+                  internalType: "uint8",
+                  name: "maxPerOrder",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bool",
+                  name: "settled",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct TicketBooth.Sale",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "endpoint",
+          outputs: [
+            {
+              internalType: "contract ILayerZeroEndpointV2",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "gasConfig",
+          outputs: [
+            {
+              internalType: "uint128",
+              name: "mintBase",
+              type: "uint128",
+            },
+            {
+              internalType: "uint128",
+              name: "mintPerTicket",
+              type: "uint128",
+            },
+            {
+              internalType: "uint128",
+              name: "settle",
+              type: "uint128",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "sender",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+              ],
+              internalType: "struct Origin",
+              name: "",
+              type: "tuple",
+            },
+            {
+              internalType: "bytes",
+              name: "",
+              type: "bytes",
+            },
+            {
+              internalType: "address",
+              name: "_sender",
+              type: "address",
+            },
+          ],
+          name: "isComposeMsgSender",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "isOpen",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "issuerEid",
+          outputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "sender",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+              ],
+              internalType: "struct Origin",
+              name: "_origin",
+              type: "tuple",
+            },
+            {
+              internalType: "bytes32",
+              name: "_guid",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes",
+              name: "_message",
+              type: "bytes",
+            },
+            {
+              internalType: "address",
+              name: "_executor",
+              type: "address",
+            },
+            {
+              internalType: "bytes",
+              name: "_extraData",
+              type: "bytes",
+            },
+          ],
+          name: "lzReceive",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "nextNonce",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "nonce",
+              type: "uint64",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "oAppVersion",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "senderVersion",
+              type: "uint64",
+            },
+            {
+              internalType: "uint64",
+              name: "receiverVersion",
+              type: "uint64",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "orderCount",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "",
+              type: "uint64",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+          ],
+          name: "peers",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "peer",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "proceeds",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint8",
+              name: "quantity",
+              type: "uint8",
+            },
+          ],
+          name: "quoteBuy",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "cost",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "lzFee",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "total",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "quoteSettle",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "nativeFee",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "renounceOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_delegate",
+              type: "address",
+            },
+          ],
+          name: "setDelegate",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint128",
+                  name: "mintBase",
+                  type: "uint128",
+                },
+                {
+                  internalType: "uint128",
+                  name: "mintPerTicket",
+                  type: "uint128",
+                },
+                {
+                  internalType: "uint128",
+                  name: "settle",
+                  type: "uint128",
+                },
+              ],
+              internalType: "struct TicketBooth.GasConfig",
+              name: "gasConfig_",
+              type: "tuple",
+            },
+          ],
+          name: "setGasConfig",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "_eid",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "_peer",
+              type: "bytes32",
+            },
+          ],
+          name: "setPeer",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "settleSale",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address payable",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "withdrawProceeds",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {
+        allowInitializePath: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        endpoint: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        isComposeMsgSender: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        lzReceive: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        nextNonce: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        oAppVersion: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        owner: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        peers: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        renounceOwnership: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        setDelegate: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        setPeer: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        transferOwnership: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+      },
+      deployedOnBlock: 9,
+    },
+    TicketIssuer: {
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "endpoint_",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "owner_",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+          ],
+          name: "AllocationExceeded",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "serial",
+              type: "uint256",
+            },
+          ],
+          name: "AlreadyCheckedIn",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "CollectionExists",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "CollectionNotCreated",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "int64",
+              name: "responseCode",
+              type: "int64",
+            },
+          ],
+          name: "HtsCallFailed",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "available",
+              type: "uint32",
+            },
+          ],
+          name: "InsufficientSupply",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidCollection",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidDelegate",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidEndpointCall",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "InvalidSaleTerms",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+          ],
+          name: "InvalidSettlement",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "LzTokenUnavailable",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "MessageTooShort",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NativeTransferFailed",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+          ],
+          name: "NoPeer",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "msgValue",
+              type: "uint256",
+            },
+          ],
+          name: "NotEnoughNative",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NotTicketHolder",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "NothingToClaim",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "addr",
+              type: "address",
+            },
+          ],
+          name: "OnlyEndpoint",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "sender",
+              type: "bytes32",
+            },
+          ],
+          name: "OnlyPeer",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "OwnableInvalidOwner",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "OwnableUnauthorizedAccount",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+          ],
+          name: "SafeERC20FailedOperation",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+          ],
+          name: "SaleInProgress",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "serial",
+              type: "uint256",
+            },
+          ],
+          name: "TicketNotDeliverable",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint8",
+              name: "kind",
+              type: "uint8",
+            },
+          ],
+          name: "UnknownMessage",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+          ],
+          name: "UnknownSale",
+          type: "error",
+        },
+        {
+          inputs: [],
+          name: "ZeroAddress",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint128",
+              name: "gasLimit",
+              type: "uint128",
+            },
+          ],
+          name: "BoothReceiveGasSet",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "symbol",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "maxSupply",
+              type: "uint32",
+            },
+          ],
+          name: "CollectionCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+            {
+              indexed: true,
+              internalType: "uint64",
+              name: "orderId",
+              type: "uint64",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "recipient",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "boothEid",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "uint256[]",
+              name: "serials",
+              type: "uint256[]",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "held",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          name: "OrderFulfilled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "bytes32",
+              name: "peer",
+              type: "bytes32",
+            },
+          ],
+          name: "PeerSet",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+            {
+              indexed: true,
+              internalType: "uint32",
+              name: "boothEid",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "uint128",
+              name: "price",
+              type: "uint128",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "allocation",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "uint64",
+              name: "closesAt",
+              type: "uint64",
+            },
+            {
+              indexed: false,
+              internalType: "uint8",
+              name: "maxPerOrder",
+              type: "uint8",
+            },
+            {
+              indexed: false,
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          name: "SaleOpened",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "sold",
+              type: "uint32",
+            },
+            {
+              indexed: false,
+              internalType: "uint32",
+              name: "released",
+              type: "uint32",
+            },
+          ],
+          name: "SaleSettled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "serial",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "holder",
+              type: "address",
+            },
+          ],
+          name: "TicketCheckedIn",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "serial",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "recipient",
+              type: "address",
+            },
+          ],
+          name: "TicketClaimed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "serial",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "recipient",
+              type: "address",
+            },
+          ],
+          name: "TicketHeld",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "MAX_PER_ORDER",
+          outputs: [
+            {
+              internalType: "uint8",
+              name: "",
+              type: "uint8",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "boothEid",
+              type: "uint32",
+            },
+          ],
+          name: "activeSaleOf",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "sender",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+              ],
+              internalType: "struct Origin",
+              name: "origin",
+              type: "tuple",
+            },
+          ],
+          name: "allowInitializePath",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "availableSupply",
+          outputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "boothReceiveGas",
+          outputs: [
+            {
+              internalType: "uint128",
+              name: "",
+              type: "uint128",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "serial",
+              type: "uint256",
+            },
+          ],
+          name: "checkIn",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "serial",
+              type: "uint256",
+            },
+          ],
+          name: "checkedIn",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "maxTickets",
+              type: "uint256",
+            },
+          ],
+          name: "claim",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "claimed",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "symbol",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "memo",
+                  type: "string",
+                },
+                {
+                  internalType: "uint32",
+                  name: "maxSupply",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes",
+                  name: "metadata",
+                  type: "bytes",
+                },
+                {
+                  internalType: "uint16",
+                  name: "royaltyBps",
+                  type: "uint16",
+                },
+                {
+                  internalType: "uint64",
+                  name: "royaltyFallback",
+                  type: "uint64",
+                },
+                {
+                  internalType: "address",
+                  name: "royaltyCollector",
+                  type: "address",
+                },
+              ],
+              internalType: "struct TicketIssuer.Collection",
+              name: "collection",
+              type: "tuple",
+            },
+          ],
+          name: "createCollection",
+          outputs: [
+            {
+              internalType: "address",
+              name: "token",
+              type: "address",
+            },
+          ],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "endpoint",
+          outputs: [
+            {
+              internalType: "contract ILayerZeroEndpointV2",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+          ],
+          name: "getSale",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "boothEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "uint128",
+                  name: "price",
+                  type: "uint128",
+                },
+                {
+                  internalType: "uint32",
+                  name: "allocation",
+                  type: "uint32",
+                },
+                {
+                  internalType: "uint32",
+                  name: "minted",
+                  type: "uint32",
+                },
+                {
+                  internalType: "uint32",
+                  name: "sold",
+                  type: "uint32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "closesAt",
+                  type: "uint64",
+                },
+                {
+                  internalType: "uint8",
+                  name: "maxPerOrder",
+                  type: "uint8",
+                },
+                {
+                  internalType: "bool",
+                  name: "settled",
+                  type: "bool",
+                },
+              ],
+              internalType: "struct TicketIssuer.Sale",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "heldTicketsOf",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "sender",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+              ],
+              internalType: "struct Origin",
+              name: "",
+              type: "tuple",
+            },
+            {
+              internalType: "bytes",
+              name: "",
+              type: "bytes",
+            },
+            {
+              internalType: "address",
+              name: "_sender",
+              type: "address",
+            },
+          ],
+          name: "isComposeMsgSender",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              components: [
+                {
+                  internalType: "uint32",
+                  name: "srcEid",
+                  type: "uint32",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "sender",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint64",
+                  name: "nonce",
+                  type: "uint64",
+                },
+              ],
+              internalType: "struct Origin",
+              name: "_origin",
+              type: "tuple",
+            },
+            {
+              internalType: "bytes32",
+              name: "_guid",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes",
+              name: "_message",
+              type: "bytes",
+            },
+            {
+              internalType: "address",
+              name: "_executor",
+              type: "address",
+            },
+            {
+              internalType: "bytes",
+              name: "_extraData",
+              type: "bytes",
+            },
+          ],
+          name: "lzReceive",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "maxSupply",
+          outputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "nextNonce",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "nonce",
+              type: "uint64",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "oAppVersion",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "senderVersion",
+              type: "uint64",
+            },
+            {
+              internalType: "uint64",
+              name: "receiverVersion",
+              type: "uint64",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "boothEid",
+              type: "uint32",
+            },
+            {
+              internalType: "uint128",
+              name: "price",
+              type: "uint128",
+            },
+            {
+              internalType: "uint32",
+              name: "allocation",
+              type: "uint32",
+            },
+            {
+              internalType: "uint64",
+              name: "closesAt",
+              type: "uint64",
+            },
+            {
+              internalType: "uint8",
+              name: "maxPerOrder",
+              type: "uint8",
+            },
+          ],
+          name: "openSale",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "saleId",
+              type: "uint64",
+            },
+            {
+              internalType: "bytes32",
+              name: "guid",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "eid",
+              type: "uint32",
+            },
+          ],
+          name: "peers",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "peer",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "boothEid",
+              type: "uint32",
+            },
+          ],
+          name: "quoteOpenSale",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "nativeFee",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "renounceOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "reservedSupply",
+          outputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "saleCount",
+          outputs: [
+            {
+              internalType: "uint64",
+              name: "",
+              type: "uint64",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint128",
+              name: "gasLimit",
+              type: "uint128",
+            },
+          ],
+          name: "setBoothReceiveGas",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_delegate",
+              type: "address",
+            },
+          ],
+          name: "setDelegate",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint32",
+              name: "_eid",
+              type: "uint32",
+            },
+            {
+              internalType: "bytes32",
+              name: "_peer",
+              type: "bytes32",
+            },
+          ],
+          name: "setPeer",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address payable",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "sweepNative",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "ticketMetadata",
+          outputs: [
+            {
+              internalType: "bytes",
+              name: "",
+              type: "bytes",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "ticketToken",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "totalMinted",
+          outputs: [
+            {
+              internalType: "uint32",
+              name: "",
+              type: "uint32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+      ],
+      inheritedFunctions: {
+        allowInitializePath: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        endpoint: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        isComposeMsgSender: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        lzReceive: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        nextNonce: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        oAppVersion: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        owner: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        peers: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        renounceOwnership: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        setDelegate: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        setPeer: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+        transferOwnership: "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol",
+      },
+      deployedOnBlock: 7,
     },
   },
 } as const;
