@@ -49,14 +49,19 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
-    hardhat: {
-      forking: {
-        url: hederaRpcUrl,
-        // @ts-expect-error - custom property for hedera-forking plugin
-        chainId: 296,
-        workerPort: 10001,
-      },
-    },
+    // Plain in-memory chain by default: tests and `yarn hardhat:chain` run offline against the mocks in
+    // contracts/mocks. `yarn hardhat:fork` sets HEDERA_FORKING to fork Hedera testnet instead.
+    hardhat:
+      process.env.HEDERA_FORKING === "true"
+        ? {
+            forking: {
+              url: hederaRpcUrl,
+              // @ts-expect-error - custom property for hedera-forking plugin
+              chainId: 296,
+              workerPort: Number(process.env.HEDERA_FORK_WORKER_PORT || 10001),
+            },
+          }
+        : {},
     hederaTestnet: {
       url: "https://testnet.hashio.io/api",
       accounts: [deployerPrivateKey],
