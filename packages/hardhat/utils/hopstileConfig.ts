@@ -78,8 +78,12 @@ export const COLLECTION = {
   royaltyBps: 500,
   /** HBAR the receiver pays when a ticket changes hands for no payment. Zero for none. */
   royaltyFallbackHbar: "1",
-  /** HBAR sent with `createCollection` to pay the HTS creation fee. */
-  creationFeeHbar: "20",
+  /**
+   * HBAR sent with `createCollection` to pay the HTS creation fee. HTS sets the fee in US dollars (2 USD for a
+   * token with custom fees, plus a 20% surcharge when a contract creates it), so the HBAR it takes moves with
+   * the exchange rate: about 24 HBAR at 0.10 USD. What it does not take stays in the issuer.
+   */
+  creationFeeHbar: "40",
 } as const;
 
 /** Terms of the sale that the deploy script opens at the booth. */
@@ -166,9 +170,10 @@ export async function txOverrides(
   config: NetworkConfig,
   options: { hederaGasLimit: bigint; value?: bigint },
 ) {
-  const feeData = await hre.ethers.provider.getFeeData();
+  // Hedera has one network-wide gas price, so it is passed as is. Other networks pick their own EIP-1559 fees.
+  const gasPrice = config.tinybarValue ? (await hre.ethers.provider.getFeeData()).gasPrice : null;
   return {
-    ...(feeData.gasPrice != null ? { gasPrice: feeData.gasPrice } : {}),
+    ...(gasPrice != null ? { gasPrice } : {}),
     ...(config.tinybarValue ? { gasLimit: options.hederaGasLimit } : {}),
     ...(options.value !== undefined ? { value: toRpcValue(config, options.value) } : {}),
   };
