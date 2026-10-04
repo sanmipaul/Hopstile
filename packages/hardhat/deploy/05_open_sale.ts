@@ -44,7 +44,7 @@ const openSale: DeployFunction = async function (hre: HardhatRuntimeEnvironment)
   log(
     `sale opened for booth endpoint ${boothEid}: ${SALE.allocation} tickets until ${new Date(closesAt * 1000).toISOString()} (tx: ${tx.hash})`,
   );
-  const links = txLinks(config, tx.hash);
+  const links = txLinks(config, tx.hash, true);
   if (links) log(`   ${links}`);
 };
 

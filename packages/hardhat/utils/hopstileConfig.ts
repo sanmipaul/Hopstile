@@ -198,10 +198,13 @@ export function readDeployedAddress(
   return JSON.parse(fs.readFileSync(file, "utf8")).address as string;
 }
 
-/** Explorer and LayerZero Scan links for a transaction, for the networks that have them. */
-export function txLinks(config: NetworkConfig, txHash: string): string {
+/**
+ * Explorer link for a transaction, for the networks that have one. Pass `sendsMessage` for a transaction that
+ * sends a LayerZero message, to add the link that tracks its delivery.
+ */
+export function txLinks(config: NetworkConfig, txHash: string, sendsMessage = false): string {
   const links = [];
   if (config.txExplorer) links.push(`explorer: ${config.txExplorer}${txHash}`);
-  if (config.lzScan) links.push(`LayerZero Scan: ${config.lzScan}${txHash}`);
+  if (sendsMessage && config.lzScan) links.push(`LayerZero Scan: ${config.lzScan}${txHash}`);
   return links.join("\n   ");
 }

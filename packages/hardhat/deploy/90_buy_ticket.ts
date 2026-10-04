@@ -48,7 +48,7 @@ const buyTicket: DeployFunction = async function (hre: HardhatRuntimeEnvironment
     return;
   }
   log("the tickets are minted on Hedera once LayerZero delivers the order, usually within a few minutes");
-  log(`   ${txLinks(config, tx.hash)}`);
+  log(`   ${txLinks(config, tx.hash, true)}`);
 };
 
 buyTicket.skip = async () => process.env.HOPSTILE_ACTION !== "buy";

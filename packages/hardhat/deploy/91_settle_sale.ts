@@ -37,7 +37,7 @@ const settleSale: DeployFunction = async function (hre: HardhatRuntimeEnvironmen
   await tx.wait();
 
   log(`sale ${sale.saleId} settled with ${sale.sold} of ${sale.allocation} tickets sold (tx: ${tx.hash})`);
-  const links = txLinks(config, tx.hash);
+  const links = txLinks(config, tx.hash, true);
   if (links) log(`   ${links}`);
 };
 
