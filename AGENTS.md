@@ -1,138 +1,138 @@
 # Agent instructions
 
-Briefing for coding agents in this app (Cursor, Claude Code, Codex). Claude Code loads it through `CLAUDE.md`.
+Briefing for coding agents working in this repository (Cursor, Claude Code, Codex). Claude Code loads it through `CLAUDE.md`. `README.md` is the full reference for humans; this file is what you need to change the code safely.
 
-This is a Scaffold-HBAR dApp: Next.js App Router, wallet connect, Debug Contracts, and Hedera networks (testnet, mainnet, local fork). The CLI may have left only Hardhat or only Foundry.
+## What this is
 
-Use the package manager this project was created with (`packageManager` in the root `package.json`, or the lockfile). Examples use `yarn`; if the app was created with npm, swap `yarn <script>` for `npm run <script>`.
+Hopstile is a Scaffold-HBAR template for cross-chain ticket sales.
 
-## Which Solidity package
+- `TicketBooth` runs on a chain other than Hedera (Base Sepolia in this template). It takes payment in the native currency and sends a mint order.
+- `TicketIssuer` runs on Hedera. It owns a Hedera Token Service (HTS) NFT collection and mints a ticket for every paid order.
+- The two contracts are LayerZero V2 OApps and talk only through LayerZero messages.
 
-- `packages/hardhat` exists → Hardhat (`hardhat-deploy`)
-- `packages/foundry` exists → Foundry (Forge scripts)
-- `packages/nextjs` is always the frontend (App Router, RainbowKit, Wagmi, Viem, DaisyUI)
-
-Follow only the flavor that is present.
+It is a Yarn workspace with two packages: `packages/hardhat` (Solidity, Hardhat, `hardhat-deploy`, ethers v6) and `packages/nextjs` (Next.js App Router, RainbowKit, wagmi, viem, DaisyUI).
 
 ## Commands
 
-Package-prefixed scripts for package-specific work. Keep only truly cross-workspace commands unprefixed.
-
 ```bash
-# Local chain + deploy + frontend (separate terminals)
-yarn hardhat:chain    # Hedera-forked Hardhat node on 8545
-yarn hardhat:deploy --network localhost
-yarn foundry:chain    # Anvil from the Foundry package
-yarn foundry:deploy
-yarn next:start       # http://localhost:3000
+# Local development (separate terminals)
+yarn hardhat:chain                           # plain local chain on port 8545, no network needed
+yarn hardhat:deploy --network localhost      # mocks, both contracts, peers, collection, first sale
+yarn hardhat:buy --network localhost         # buy a ticket; TICKETS and RECIPIENT are optional
+yarn hardhat:status --network localhost      # print both contracts' state
+yarn next:dev                                # http://localhost:3000
 
-# Frontend only
-yarn next:dev
-
-# Quality / build
-yarn lint
-yarn format
-yarn next:build
+# Checks: run all of these before you call a change done
 yarn hardhat:compile
-yarn foundry:compile
+yarn hardhat:test
+yarn lint
+yarn hardhat:check-types
+yarn next:check-types
+yarn next:build
 
-# Live networks
-yarn hardhat:deploy --network hederaTestnet   # or hederaMainnet
-yarn foundry:deploy --network hedera_testnet  # or hedera_mainnet
-yarn hardhat:verify -- HederaToken testnet [0xAddress]
-yarn foundry:verify:testnet
-
-# Deployer account
-yarn hardhat:account:generate
+# Live networks: the Hedera deploy runs twice because each side needs the other's address
 yarn hardhat:account:import
-yarn hardhat:account
+yarn hardhat:deploy --network hederaTestnet
+yarn hardhat:deploy --network baseSepolia
+yarn hardhat:deploy --network hederaTestnet
+yarn hardhat:buy --network baseSepolia
+yarn hardhat:settle --network baseSepolia
 ```
 
-`yarn hardhat:deploy` without `--network localhost` targets the in-process `hardhat` network, not the long-running fork.
+`yarn hardhat:deploy` without `--network` targets a throwaway in-memory chain. Always pass a network.
 
-## Layout
+Tests run offline against the mocks in `contracts/mocks` and take a few seconds.
 
-### Hardhat
+## Where things are
 
-- Contracts: `packages/hardhat/contracts/`
-- Deploy scripts: `packages/hardhat/deploy/`
-- Tests: `packages/hardhat/test/`
-- Config: `packages/hardhat/hardhat.config.ts`
-- Tagged deploy: if `deployHederaToken.tags = ["HederaToken"]`, run `yarn hardhat:deploy --tags HederaToken`
+| Path | What |
+| --- | --- |
+| `packages/hardhat/contracts/TicketIssuer.sol` | Hedera side: collection, sales, minting, held tickets, check-in. |
+| `packages/hardhat/contracts/TicketBooth.sol` | Remote side: buying, settlement, proceeds, gas budgets. |
+| `packages/hardhat/contracts/libraries/TicketMessages.sol` | The only definition of the three messages. Both contracts use it. |
+| `packages/hardhat/contracts/libraries/LzOptions.sol` | Builds the LayerZero option that sets gas for `lzReceive`. |
+| `packages/hardhat/contracts/interfaces/` | HTS system contract (`0x167`) and HIP-719 association. |
+| `packages/hardhat/contracts/mocks/` | `MockEndpointV2`, `MockHederaTokenService`, `CodecHarness`. Never deploy these to a live network. |
+| `packages/hardhat/utils/hopstileConfig.ts` | Every tunable: networks, endpoints, collection, sale terms, gas. |
+| `packages/hardhat/deploy/` | `00` local mocks, `01` issuer, `02` booth, `03` peers, `04` collection, `05` sale, `90` buy, `91` settle. |
+| `packages/hardhat/test/` | `TicketIssuer`, `TicketBooth`, `Delivery` (failure and ordering cases), `Codec`, `DeployScripts`. |
+| `packages/nextjs/contracts/deployedContracts.ts` | Generated by the deploy task. Do not edit by hand. |
+| `packages/nextjs/scaffold.config.ts` | Target networks for the frontend. |
 
-### Foundry
+## Rules that must keep holding
 
-- Contracts: `packages/foundry/contracts/`
-- Deploy scripts: `packages/foundry/script/` (`Deploy.s.sol`, `DeployHederaToken.s.sol`, `DeployHtsTokenCreator.s.sol`)
-- Tests: `packages/foundry/test/`
-- Config: `packages/foundry/foundry.toml`
-- One contract: `yarn foundry:deploy --file DeployHederaToken.s.sol`
+1. **Supply.** `totalMinted + reservedSupply + availableSupply() == maxSupply`, and the HTS token's supply equals `totalMinted`. `expectConsistent` in `test/helpers/fixtures.ts` checks both; call it in every new test that mints or settles.
+2. **A paid order can always be minted.** The issuer reserves a sale's allocation when it opens the sale, and the booth cannot sell beyond that allocation. Do not add a way to shrink a reservation while its sale is unsettled.
+3. **Delivery never depends on the recipient.** `_deliver` returns false when HTS refuses a transfer, and the ticket is held for `claim`. Do not replace it with a call that reverts: the order was already paid for on another chain.
+4. **Messages can arrive in any order.** A settlement may land before an order that was sent earlier. Settling caps the sale at `sold`; it does not stop mints. Any new message handler must work whatever arrived before it.
+5. **A booth call never spends more than its own `msg.value`.** `TicketBooth._payNative` is overridden so `buy` can pay the price and the fee together. Every `_lzSend` in the booth must pass a fee taken from `msg.value`.
+6. **Both contracts speak one format.** A change to `TicketMessages` changes both sides. Redeploy both and settle open sales first, because a message already in flight is decoded by the new code.
+7. **State changes come before external calls**, and the booth's value-moving entry points are `nonReentrant`.
 
-### After deploy
+## Hedera details
 
-ABIs and addresses are written to `packages/nextjs/contracts/deployedContracts.ts`. Put third-party contracts in `packages/nextjs/contracts/externalContracts.ts`.
+- Inside the EVM, `msg.value` and quoted fees are in **tinybars** (8 decimals). Over JSON-RPC, `value` is in **weibars** (18 decimals). Multiply by 10^10 when sending. Use `toRpcValue` from `hopstileConfig.ts` in scripts, and do the same in the frontend.
+- An account must be **associated** with an HTS token to receive it, unless it has a free auto-association slot. Users call `associate()` on the token address.
+- System contracts **return a response code** instead of reverting. `22` is success. Check it and revert with `HtsCallFailed(code)`.
+- `createNonFungibleToken` is **payable**: the creation fee is `msg.value`.
+- `mintToken` mints **at most 10** serials per call and metadata is **at most 100 bytes**. `MAX_PER_ORDER` exists because of the first limit.
+- HTS charges its fees **as gas**, so a mint needs far more gas than a storage write. The gas the booth buys for an order is `GAS.mintBase + GAS.mintPerTicket * quantity`.
+- Hedera refunds **at most 20%** of unused gas, so scripts set explicit, modest gas limits on Hedera through `txOverrides`.
+- The official HTS emulator does **not** assign serials when it mints NFTs. Local runs and tests install `MockHederaTokenService` at `0x167` instead.
 
-Sample contracts on this starter: `HederaToken` (ERC-20) and `HtsTokenCreator` (HTS precompile at `0x167`).
+## LayerZero details
 
-## Frontend contract interaction
+- An OApp only accepts messages from its **peer** and only sends to it. `03_wire_peers.ts` sets both. `NoPeer` means a side is not wired.
+- Every send carries **options** that set the gas for `lzReceive` on the destination. Build them with `LzOptions.lzReceive`.
+- **Quote, then send a little more.** `quoteOpenSale`, `quoteBuy` and `quoteSettle` return the fee; the endpoint refunds the surplus to the caller.
+- If `_lzReceive` **reverts**, the message stays stored in the endpoint and can be retried. Revert only for conditions a retry or a later message can fix, or that mean the message is not legitimate.
+- Endpoint ids and addresses are in `NETWORKS` in `hopstileConfig.ts`. Hedera testnet is `40285`, Base Sepolia is `40245`.
+- `hardhat-deploy`'s own `read` and `execute` return ethers v5 values. Scripts use `hre.ethers.getContract` so every number is a `bigint`.
 
-Hooks live in `packages/nextjs/hooks/scaffold-hbar`. Use the names that exist in the codebase:
+## Common tasks
 
-- `useScaffoldReadContract` — not `useScaffoldContractRead`
-- `useScaffoldWriteContract` — not `useScaffoldContractWrite`
+**Change the collection or the sale.** Edit `COLLECTION` or `SALE` in `hopstileConfig.ts` and redeploy. The collection is created once per issuer; a new sale needs the previous one settled.
 
-Also: `useScaffoldWatchContractEvent`, `useScaffoldEventHistory`, `useDeployedContractInfo`, `useScaffoldContract`, `useTransactor`.
+**Sell on another chain.** Add the network to `hardhat.config.ts` and an entry with role `booth` to `NETWORKS`, deploy there, then rerun the Hedera deploy. The issuer keeps one sale per booth chain.
 
-```typescript
-const { data: balance } = useScaffoldReadContract({
-  contractName: "HederaToken",
-  functionName: "balanceOf",
-  args: [connectedAddress],
-});
+**Add a message.** Add a kind, a struct and an encode and decode pair to `TicketMessages`, handle the kind in the receiving `_lzReceive`, add a round-trip test to `Codec.test.ts` and delivery tests to `Delivery.test.ts`.
 
-const { writeContractAsync, isPending } = useScaffoldWriteContract({
-  contractName: "HederaToken",
-});
+**Change the gas budgets.** Edit `GAS` in `hopstileConfig.ts` for new deployments, or call `TicketBooth.setGasConfig` on a live booth. `DeployScripts.test.ts` checks that the largest order mints within the configured budget.
 
-await writeContractAsync({
-  functionName: "mint",
-  args: [connectedAddress, parseEther("1")],
-});
-```
-
-`HederaToken.mint` is `onlyOwner`. For HTS creation, `HtsTokenCreator.createToken` is payable (HTS fee via `msg.value`) and emits `TokenCreated`.
-
-### UI
-
-Use `@scaffold-hbar-ui/components` for web3 UI: `Address`, `AddressInput`, `Balance`, `EtherInput`, `IntegerInput`.
-
-Use DaisyUI classes, not raw Tailwind when a DaisyUI component exists:
+**Call the contracts from the frontend.** Use the Scaffold-HBAR hooks in `packages/nextjs/hooks/scaffold-hbar`:
 
 ```tsx
-<button className="btn btn-primary">Connect</button>
+const { data: sale } = useScaffoldReadContract({
+  contractName: "TicketBooth",
+  functionName: "currentSale",
+});
+
+const { data: quote } = useScaffoldReadContract({
+  contractName: "TicketBooth",
+  functionName: "quoteBuy",
+  args: [2],
+});
+
+const { writeContractAsync } = useScaffoldWriteContract({ contractName: "TicketBooth" });
+
+await writeContractAsync({
+  functionName: "buy",
+  args: [recipient, 2],
+  value: quote?.[2], // cost + LayerZero fee
+});
 ```
 
-### Networks
+The hook names are `useScaffoldReadContract` and `useScaffoldWriteContract`. Others available: `useScaffoldWatchContractEvent`, `useScaffoldEventHistory`, `useDeployedContractInfo`, `useScaffoldContract`, `useTransactor`.
 
-- Hardhat: `packages/hardhat/hardhat.config.ts` (`hederaTestnet` 296, `hederaMainnet` 295)
-- Foundry: `packages/foundry/foundry.toml` (`hedera_testnet`, `hedera_mainnet`)
-- Next.js: `packages/nextjs/scaffold.config.ts` (target networks, polling, RPC overrides, WalletConnect)
+The booth and the issuer are on different chains. A page that shows both must read each contract on its own chain, and a buyer signs on the booth's chain while the ticket appears on Hedera. The ticket token is not in `deployedContracts.ts` because HTS creates it; read its address from `TicketIssuer.ticketToken()` and use a standard ERC-721 ABI for reads.
 
 ## Style
 
 | Style | Use |
 | --- | --- |
-| `UpperCamelCase` | types, components |
+| `UpperCamelCase` | types, components, contracts |
 | `lowerCamelCase` | variables, functions |
 | `CONSTANT_CASE` | constants |
-| `snake_case` | Hardhat deploy files and Foundry scripts |
+| `snake_case` with a numeric prefix | Hardhat deploy files |
 
-Next.js imports use the `~~` alias:
-
-```tsx
-import { useTargetNetwork } from "~~/hooks/scaffold-hbar";
-```
-
-App Router pages live under `packages/nextjs/app/`. Add `"use client"` when the page uses hooks.
-
-Prefer `type` over `interface`. No `T` prefix on types. Let TypeScript infer when it can. Comments should add information.
+Solidity: custom errors, not revert strings. NatSpec on every external function. Next.js imports use the `~~` alias. Use DaisyUI classes and `@scaffold-hbar-ui/components` for web3 UI. Prefer `type` over `interface`. Comments should add information.
