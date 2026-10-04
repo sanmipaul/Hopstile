@@ -14,6 +14,7 @@
     "hardhat:account:generate": "yarn workspace @sh/hardhat account:generate",
     "hardhat:account:import": "yarn workspace @sh/hardhat account:import",
     "hardhat:account:reveal-pk": "yarn workspace @sh/hardhat account:reveal-pk",
+    "hardhat:buy": "yarn workspace @sh/hardhat buy",
     "hardhat:chain": "yarn workspace @sh/hardhat chain",
     "hardhat:check-types": "yarn workspace @sh/hardhat check-types",
     "hardhat:clean": "yarn workspace @sh/hardhat clean",

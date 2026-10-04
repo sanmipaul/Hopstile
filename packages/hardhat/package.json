@@ -6,6 +6,7 @@
     "account:generate": "hardhat run scripts/generateAccount.ts",
     "account:import": "hardhat run scripts/importAccount.ts",
     "account:reveal-pk": "hardhat run scripts/revealPK.ts",
+    "buy": "HOPSTILE_ACTION=buy ts-node scripts/runHardhatDeployWithPK.ts --tags Buy",
     "chain": "hardhat node --network hardhat --no-deploy",
     "check-types": "tsc --noEmit --incremental",
     "compile": "hardhat compile",
