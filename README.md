@@ -226,8 +226,9 @@ These are quotes from the live testnet endpoints on 4 October 2026. They change 
 | Message | Gas bought on the destination | LayerZero fee |
 | --- | --- | --- |
 | Sale terms, Hedera to Base Sepolia | 200,000 | about 2.15 HBAR |
-| Order for one ticket, Base Sepolia to Hedera | 500,000 | about 0.00013 ETH |
-| Order needing 2,000,000 gas, Base Sepolia to Hedera | 2,000,000 | about 0.0002 ETH |
+| Order for one ticket, Base Sepolia to Hedera | 750,000 | about 0.00014 ETH |
+| Order for four tickets, Base Sepolia to Hedera | 2,100,000 | about 0.0002 ETH |
+| Settlement, Base Sepolia to Hedera | 150,000 | about 0.00011 ETH |
 
 ## Contracts
 
@@ -294,7 +295,7 @@ Hedera's EVM behaves like any other in most respects. These are the places where
 
 **Value is in tinybars inside the EVM and in weibars over JSON-RPC.** On Hedera, `msg.value` and every fee a contract quotes are in tinybars, with 8 decimals. The JSON-RPC relay expects the `value` of a transaction in weibars, with 18 decimals, and divides by 10^10 on the way in. So the fee from `quoteOpenSale` must be multiplied by 10^10 before it is sent. `toRpcValue` in [`hopstileConfig.ts`](packages/hardhat/utils/hopstileConfig.ts) does this for the scripts, and a frontend must do the same.
 
-**HTS charges its fees as gas.** Minting through the system contract costs far more gas than a storage write. The booth therefore buys a generous amount of gas on Hedera for each order: `mintBase + mintPerTicket * quantity`, 200,000 and 300,000 by default.
+**HTS charges its fees as gas.** Minting through the system contract costs far more gas than a storage write, and because HTS fees are set in US dollars, the gas a mint needs rises when HBAR falls. At 0.10 USD per HBAR, minting one serial costs about 270,000 gas. The booth therefore buys a generous amount of gas on Hedera for each order: `mintBase + mintPerTicket * quantity`, 300,000 and 450,000 by default. If the HBAR price drops far enough for mints to run out of gas, raise the budget with `TicketBooth.setGasConfig`; no redeploy is needed.
 
 **Hedera refunds at most 20% of unused gas.** A gas limit far above what a call uses is paid for, so the scripts set explicit, modest limits on Hedera instead of large safe ones.
 
