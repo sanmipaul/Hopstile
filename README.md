@@ -178,7 +178,7 @@ The mock token service exists because the official HTS emulator in `@hashgraph/s
 
 The same key deploys to both chains.
 
-- Create an ECDSA account in the [Hedera Portal](https://portal.hedera.com/) and use its [faucet](https://portal.hedera.com/faucet) for testnet HBAR. Budget about 40 HBAR: 20 are sent with the collection creation and the rest covers deployment and the LayerZero fee.
+- Create an ECDSA account in the [Hedera Portal](https://portal.hedera.com/) and use its [faucet](https://portal.hedera.com/faucet) for testnet HBAR. Budget about 60 HBAR: 40 are sent with the collection creation to cover the HTS creation fee, and the rest covers deployment and the LayerZero fee.
 - Send a little Base Sepolia ETH to the same address. About 0.01 ETH is plenty.
 
 Import the key. It is stored encrypted in `packages/hardhat/.env`, which is ignored by git, and you are asked for the password on every deploy.
