@@ -18,6 +18,7 @@
     "lint": "eslint",
     "lint-staged": "eslint",
     "settle": "HOPSTILE_ACTION=settle ts-node scripts/runHardhatDeployWithPK.ts --tags Settle",
+    "status": "hardhat run scripts/status.ts",
     "test": "REPORT_GAS=true hardhat test",
     "verify:contract": "ts-node scripts/verifySourcify.ts"
   },
