@@ -17,6 +17,7 @@
     "format": "prettier --write './**/*.(ts|sol)'",
     "lint": "eslint",
     "lint-staged": "eslint",
+    "settle": "HOPSTILE_ACTION=settle ts-node scripts/runHardhatDeployWithPK.ts --tags Settle",
     "test": "REPORT_GAS=true hardhat test",
     "verify:contract": "ts-node scripts/verifySourcify.ts"
   },

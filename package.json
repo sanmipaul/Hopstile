@@ -25,6 +25,7 @@
     "hardhat:format": "yarn workspace @sh/hardhat format",
     "hardhat:lint": "yarn workspace @sh/hardhat lint",
     "hardhat:lint-staged": "yarn workspace @sh/hardhat lint-staged",
+    "hardhat:settle": "yarn workspace @sh/hardhat settle",
     "hardhat:test": "yarn workspace @sh/hardhat test",
     "hardhat:verify": "yarn workspace @sh/hardhat verify:contract",
     "lint": "yarn next:lint && yarn hardhat:lint",
